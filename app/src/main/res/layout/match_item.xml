@@ -10,14 +10,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imHomeTime"
+            android:id="@+id/ivHomeTime"
             android:layout_width="@dimen/team_image_size"
             android:layout_height="@dimen/team_image_size"
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_default"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/cd_Home_team"
+            android:contentDescription="@string/cd_home_team"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -29,9 +29,9 @@
             tools:text="Home Team"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imHomeTime"
-            app:layout_constraintStart_toStartOf="@+id/imHomeTime"
-            app:layout_constraintTop_toBottomOf="@+id/imHomeTime" />
+            app:layout_constraintEnd_toEndOf="@+id/ivHomeTime"
+            app:layout_constraintStart_toStartOf="@+id/ivHomeTime"
+            app:layout_constraintTop_toBottomOf="@+id/ivHomeTime" />
 
         <TextView
             android:id="@+id/tvHomeTimeScore"
@@ -40,9 +40,9 @@
             android:layout_marginStart="@dimen/margin_default"
             tools:text="99"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toBottomOf="@+id/imHomeTime"
-            app:layout_constraintStart_toEndOf="@+id/imHomeTime"
-            app:layout_constraintTop_toTopOf="@+id/imHomeTime" />
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeTime"
+            app:layout_constraintStart_toEndOf="@+id/ivHomeTime"
+            app:layout_constraintTop_toTopOf="@+id/ivHomeTime" />
 
         <TextView
             android:id="@+id/tvVersus"
@@ -50,10 +50,10 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_versus"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintBottom_toBottomOf="@+id/imHomeTime"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeTime"
             app:layout_constraintEnd_toStartOf="@+id/tvAwayTimeScore"
             app:layout_constraintStart_toEndOf="@+id/tvHomeTimeScore"
-            app:layout_constraintTop_toTopOf="@+id/imHomeTime" />
+            app:layout_constraintTop_toTopOf="@+id/ivHomeTime" />
 
         <ImageView
             android:id="@+id/ivAwayTime"
