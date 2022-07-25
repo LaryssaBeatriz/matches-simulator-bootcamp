@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -19,11 +21,13 @@ import simulator.dio.R;
 import simulator.dio.data.MatchesAPI;
 import simulator.dio.databinding.ActivityMainBinding;
 import simulator.dio.domain.Match;
+import simulator.dio.ui.adapter.MatchesAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private MatchesAPI matchesAPI;
+    private RecyclerView.Adapter matchesAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupHTTPClient() {
         // esse método cria uma conexão com a api e converte ele para que o app possa compreender
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://laryssabeatriz.github.io/matches-simulator-api/matches.json")
+                .baseUrl("https://laryssabeatriz.github.io/matches-simulator-api/matches.json/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -61,13 +65,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupMatchesList(){
+        binding.rvMatches.setHasFixedSize(true);
+        binding.rvMatches.setLayoutManager(new LinearLayoutManager(this));
+
         // o callback retorna qual a resposta do sistema, se deu certo ou se ocorreu erro e capta o que fazer
         matchesAPI.getMatches().enqueue(new Callback<List<Match>>() {
             @Override
             public void onResponse(Call<List<Match>> call, Response<List<Match>> response) {
                 if(response.isSuccessful()){
                     List<Match> matches = response.body();
-                    Log.i("SIMULATOR", " DEU TUDO CERTO, PARTIDAS = " + matches.size());
+                    matchesAdapter = new MatchesAdapter((matches));
+                    binding.rvMatches.setAdapter(matchesAdapter);
                 }else {
                     shoutErrorMessage();
                 }
