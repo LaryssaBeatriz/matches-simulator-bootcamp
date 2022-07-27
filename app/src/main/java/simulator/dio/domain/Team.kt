@@ -9,7 +9,7 @@ data class Team(
     @SerializedName("nome")
     val name: String,
     @SerializedName("forca")
-    val starts: Int,
+    val stars: Int,
     @SerializedName("imagem")
     val image: String,
     var score: Int?
